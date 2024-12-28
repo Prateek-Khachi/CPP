@@ -1,37 +1,40 @@
-#include <bits/stdc++.h>
-
+// C++ program to check if a given number is perfect
+// or not
+#include<iostream>
 using namespace std;
-struct RetrieveKey
-{
-    template <typename T>
-    typename T::first_type operator()(T keyValuePair) const
-    {
-        return keyValuePair.first;
-    }
-};
 
+// Returns true if n is perfect
+bool isPerfect(long long int n)
+{
+	// To store sum of divisors
+	long long int sum = 1;
+
+	// Find all divisors and add them
+	for (long long int i=2; i*i<=n; i++)
+	{
+		if (n%i==0)
+		{
+			if(i*i!=n)
+				sum = sum + i + n/i;
+			else
+				sum=sum+i;
+		}
+	} 
+	// If sum of divisors is equal to
+	// n, then n is a perfect number
+	if (sum == n && n != 1)
+		return true;
+
+	return false;
+}
+
+// Driver program
 int main()
 {
+	cout << "Below are all perfect numbers till 10000\n";
+	for (int n =2; n<10000; n++)
+		if (isPerfect(n))
+			cout << n << " is a perfect number\n";
 
-//     map<vector<int>, int> m;
-//     vector<int> keys;
-
-//     m[{1, 2, 3, 4}] = 2;
-
-//     m[{2, 4, 5, 6}] = 1;
-
-//     m[{1, 2, 3, 8}] = 3;
-//     // Trying to update an existing key
-
-//     // Retrieve all keys
-//     transform(m.begin(), m.end(), back_inserter(keys), RetrieveKey());
-
-//     // Dump all keys
-//     copy(keys.begin(), keys.end(), ostream_iterator<int>(cout, "\n"));
-// }
-
-
-    cout<<log10(128)<<endl;
-    
-    cout<<floor(pow(10,2.10))<<endl;
+	return 0;
 }
