@@ -1,1 +1,2 @@
- // cout << m["banana"] << "\n"; // 3\
+ve(skill, index+1, arr);
+        arr.pop_back();
